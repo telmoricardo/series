@@ -17,4 +17,15 @@ class SerieController extends Controller
        return response()
            ->json(Serie::create($request->all()), 201);
     }
+
+    public function get(int $id) {
+
+        $serie = Serie::find($id);
+
+        if(is_null($serie)) {
+            return response()->json('', 204);
+        }
+
+        return response()->json($serie);
+    }
 }
